@@ -1,0 +1,49 @@
+Palindromes
+
+1)Recursive Definition
+This problem is asking how if given a string we can return how many palindromes we can find within the string if any. Recursively we
+would need to pass through the string and its subsets so the recursive definition should be something like f(n) = f(n-1)
+
+2)Dynamic Programming Breakdown
+Using dynamic programming we can break the problem down by storing each character into a 2D matrix and then start taking two
+characters and checking if they're a palindrome or not. Lastly we would check from the palindromes we confirmed if by combinig
+the different palindromes we can create more and repeat until we have found them all.
+
+3)IDEAL & Duke 7
+Identify the Problem:
+This problem is asking how if given a string we can return how many palindromes we can find within the string if any.
+
+Define Goals:
+-Store the smallest palindromes possible
+-Start combining the palindromes you have found and check if they can be combined to make a larger one
+-Work from the smallest to the largest to avoid confusion and to avoid over doing the same thing
+
+Explore Solutions:
+By using the dynamic programming approach we will work our way down the string until we find all combinations that can make a larger
+palindrome. This way once we rule out a non-palindrome, we don't check it again.
+
+Act:
+Pseudocode
+
+palindrome(s)
+  count = 0
+  if s = null or s.length() == 0
+    return count
+  arr[s.length()][s.length()]
+  for i to n
+    arr[i][i] = true
+    count++
+  for i to n
+    if charPrev == charCurr
+      arr[i-1][i] = true
+      count++
+   for j to n
+    for x to j
+      if chars are ==
+        arr[i][j] = true
+        count++
+     return count
+    
+Learn:
+Although ultimately dynamically we have more code than we would recursively, this avoids checking strings we would have early ruled out
+making it an optimal solution.
