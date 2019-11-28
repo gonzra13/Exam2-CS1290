@@ -1,0 +1,50 @@
+Falling Path
+
+1)Recursive Definition
+This problem is asking if when given a square array, what would be the minimum sum of picking an element from every row and every column.
+Recursively we would begin processing each row, and we set arr[R][C] = A[R][C] + min(arr[R+1,C-1], arr[R+1,C], arr[R+1,C+1])
+
+
+2)Dynamic Programming Breakdown
+Using dynamic programming we can break the problem down by using the same equation from above and going through all of the row and all 
+of the columns and keep adding the maximum sum. We then compare the best from the solutions we create using the equation we use. We 
+then go through the array of our solutions and return the minimum.
+
+3)IDEAL & Duke 7
+Identify the Problem:
+his problem is asking if when given a square array, what would be the minimum sum of picking an element from every row and every column.
+
+Define Goals:
+-Organize the numbers we are getting from each row and column to make sure we don't get another number from that row and that column
+-Organize the other potential solutions into an array
+-Do this all without over-applying the algorithm to solutions that we can rule out
+
+Explore Solutions:
+By using the dynamic programming approach instead of the recursive approach, I can organize the subproblems in order to optimize the 
+overall problem without having to do more work.
+
+Act:
+Pseudocode
+
+n = 3 
+minFallingPathSum(A)
+  for i in from second last row - adding maximum size
+    for x in n (length)
+      best = A[row][column]
+      if column > 0
+        best = min best, next row last column
+      if column + 1 < n
+        best = min best, next row next column
+      
+      A[row][column] = A[row][column] + best
+      
+    ans = sys.maxsize
+   
+  for i in range(n):
+    ans = min(ans, A[0][i])
+    
+  return ans
+    
+Learn:
+Although ultimately dynamically we have more code than we would recursively, this one works best because
+we create a new variable to store the optimal values as we go and shorten the running time.
