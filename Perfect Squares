@@ -1,1 +1,51 @@
-#### Perfect Squares Problem
+Perfect Squares Problem
+
+1)Recursive Definition
+This problem is asking us to, when given n, find the least number of perfect square numbers (the squares of whole numbers) we have to add 
+up to make n. This problem can be broken down recursively by having a for loop that goes through all numbers from 1 to n until the square
+of a i (from the for loop) is larger than n otherwise we will call the method again using (n - square of i) as the new parameter or n. 
+This will be repeated until we hit our base case of if(n <= 3) since anything 3 and below would just be that number (1+1+...n).
+
+This means that we will start from 1 and go until a number we hit a number that when squared is smaller than or equal to n.
+So, for every i, we recursively call n-i making the recursive definition: 
+if n <= 3 f(n) = n
+if n > 3  f(n) = f(n - 1) + n
+
+2)Dynamic Programming Breakdown
+Using dynamic programming we can break the problem down by creating a list that will hold all the results for all n's that met the base 
+case we mentioned above so when n <= 3. The result will be store in the corresponding index. We will then append the rest so every number 
+from 1 to n is in the list. In that for loop is where I would have the other for loop that also looks for the smallest and returns that 
+number.
+
+3)IDEAL & Duke 7
+Identify the Problem:
+We are being asked to find the least number of perfect square sums it would take to add up to n when given n.
+
+Define Goals:
+-Find the different perfect square sums it would take to reach n
+-From those solutions return the minimum
+-Figure out a solution to this problem where I don't have to unnecessarily apply a function over and over again
+
+Explore Solutions:
+Using recursion is a solution that can definitely be applied to this problem although it would result in subproblems being solved over and
+over again. The time complexity is exponential. By using dynamic programming, we can avoid the precomputations of the 
+same subproblems.
+
+Act:
+Pseudocode
+
+perfectSquare(n):
+  squares = [0,1,2,3]
+  for i (4 - n+1):
+    append(i)
+    for j (1,i^2 + 1)
+      temp = j^2
+      if temp > i
+        nothing
+       else
+        squares[i] = minimum of squares[i], 1+squares[i-temp]
+    return squares[n]
+    
+Learn:
+Recursion is definitely a possible solution in this problem and it definitely isn’t the worst possible solution but by using dynamic 
+programming we not only simplify the problem but we break it down into its smaller sub-problems and make it more efficient.
