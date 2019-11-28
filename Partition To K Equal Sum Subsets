@@ -1,0 +1,48 @@
+Partition To K Equal Sum Subsets
+
+1)Recursive Definition
+This problem is asking us to return whether or not an array of n integers can be divided into k subsets where all of the subsets have
+have the same sum. To solve this recursively we will need a Boolean so we can keep track of whether or not a number is already included 
+in a subset, and an array for sum. We will have multiple base cases like if k is 1 (which would be true), if the length of the array is 
+less than k (which tells us it can't be split into k groups) and if sum is not divisible by k. Recursively we would have to try and add
+array elements into the subsets and check if the sum of that subset reaches sum.
+
+The recursive definition would then be
+if k = 1  f(n) = 1
+if k != 1 f(n) = f(n - 1) ^2
+
+2)Dynamic Programming Breakdown
+Using dynamic programming we can break the problem down by having a method that will check if we can break the list into k groups.
+This substitutes the if k = 1 and if n < k base cases. We will then also have a variable for the array that isn't in a subset and
+one for what is being used. These variables will essential in that it is how we wont have to go and try multiple solutions over
+and over.
+
+3)IDEAL & Duke 7
+Identify the Problem:
+This problem is asking us to return whether or not an array of n integers can be divided into k subsets where all of the subsets have
+have the same sum.
+
+Define Goals:
+-Organize which elements in the array have been used and which are left
+-Organize he sums of each subset
+-Return whether it is possible or not
+
+Explore Solutions:
+Using recursion is a solution that can definitely be applied to this problem but not only is it not effective but it also takes unnecessary
+steps and unnecessary space. Using dynamic programming we can better organize the different variables that will promote us not applying
+the same function even after we have our answer.
+
+Act:
+Pseudocode
+
+canPartition(nums, k):
+  sort nums
+  target, remaining = remaining sum(nums), k
+  if nums[-1] or remaining > target: return false
+  
+  dp = [False] * (1 << len(nums))
+    
+Learn:
+Recursion solves this problem but does a lot of extra work even after the solution. Dynamic programming although we create multiple
+variables, we could potentially be saving space because recursively we go through more possible subsets.
+
