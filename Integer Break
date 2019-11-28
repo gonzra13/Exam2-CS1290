@@ -1,7 +1,8 @@
 Integer Break
 
 1)Recursive Definition
-Mathematically we are given n and we ned to 
+This problem asks us to break a number n into the sum of at least two integers and max the product and return the product. Mathematically we are given n and we need to maximize
+a1 * a2 * a3... a*k such that n = that sum and a1, a2,... ak > 0. The recursive definition looks like x^(n/x)
 
 2)Dynamic Programming Breakdown
 Using dynamic programming we can break the problem down by using the same equation from above and going through all of the row and all 
@@ -10,7 +11,7 @@ then go through the array of our solutions and return the minimum.
 
 3)IDEAL & Duke 7
 Identify the Problem:
-his problem is asking if when given a square array, what would be the minimum sum of picking an element from every row and every column.
+This problem asks us to break a number n into the sum of at least two integers and max the product and return the product.
 
 Define Goals:
 -Organize the numbers we are getting from each row and column to make sure we don't get another number from that row and that column
@@ -23,24 +24,20 @@ By using the dynamic programming approach instead of the recursive approach, I c
 Act:
 Pseudocode
 
-n = 3 
-integerBreak(A)
-  for i in from second last row - adding maximum size
-    for x in n (length)
-      best = A[row][column]
-      if column > 0
-        best = min best, next row last column
-      if column + 1 < n
-        best = min best, next row next column
-      
-      A[row][column] = A[row][column] + best
-      
-    ans = sys.maxsize
-   
-  for i in range(n):
-    ans = min(ans, A[0][i])
-    
-  return ans
+if n = 3
+  return 2
+
+maxProduct = 0
+
+if n % 3 == 0
+  maxProduct = power(3,(n//3))
+  return max
+elif (n%3==1)
+  maxProduct = 2*2*power(3,(n/3) -1)
+  retunr maxProduct
+elif (n%3==2)
+  maxProduct = 2 * power(3,n/3)
+  return maxProduct
     
 Learn:
 Although ultimately dynamically we have more code than we would recursively, this one works best because
